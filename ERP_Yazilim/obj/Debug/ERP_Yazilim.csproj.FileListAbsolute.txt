@@ -1,0 +1,11 @@
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\bin\Debug\ERP_Yazilim.exe.config
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\bin\Debug\ERP_Yazilim.exe
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\bin\Debug\ERP_Yazilim.pdb
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.csprojResolveAssemblyReference.cache
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.FrmAnasayfa.resources
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Properties.Resources.resources
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.csproj.GenerateResource.Cache
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.exe
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.pdb
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.FrmAltktg.resources
+E:\2019_ETICARET\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.FrmAnaktg.resources
