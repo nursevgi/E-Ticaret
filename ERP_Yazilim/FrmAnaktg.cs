@@ -78,29 +78,39 @@ namespace ERP_Yazilim
 
         private void btnkaydet_Click(object sender, EventArgs e)
         {
-            baglan();
-            command.CommandText = "SELECT COUNT(*) FROM anakategori WHERE anakod=@anakod";
-            command.Parameters.AddWithValue("@anakod", txtanaid.Text);
-
-            int sayi = Convert.ToInt32(command.ExecuteScalar());
-
-            if(sayi>0)
+            if(txtanaktg.Text=="")
             {
-                DialogResult cevap = MessageBox.Show("Alt Kategori Kaydı Güncellenecektir.İşleme Devam Etmek İstiyor Musunuz?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (cevap == DialogResult.Yes)
-                {
-                    guncelleAltktg();
-                }
-                else
-                {
-                    MessageBox.Show("Alt Kategori Güncelleme İşlemi İptal Edildi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    listele();
-                }
+                MessageBox.Show("Ana Kategori Adı Boş Geçilemez!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtanaktg.Focus();
             }
             else
             {
-                ekleAltktg();
+                baglan();
+                command.CommandText = "SELECT COUNT(*) FROM anakategori WHERE anakod=@anakod";
+                command.Parameters.AddWithValue("@anakod", txtanaid.Text);
+
+                int sayi = Convert.ToInt32(command.ExecuteScalar());
+
+                if (sayi > 0)
+                {
+                    DialogResult cevap = MessageBox.Show("Alt Kategori Kaydı Güncellenecektir.İşleme Devam Etmek İstiyor Musunuz?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (cevap == DialogResult.Yes)
+                    {
+                        guncelleAltktg();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Alt Kategori Güncelleme İşlemi İptal Edildi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        listele();
+                    }
+                }
+                else
+                {
+                    ekleAltktg();
+                }
             }
+
+           
         }
 
         private void btnyeni_Click(object sender, EventArgs e)
