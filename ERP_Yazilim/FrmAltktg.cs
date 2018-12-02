@@ -182,7 +182,7 @@ namespace ERP_Yazilim
 
                 else
                 {
-                    MessageBox.Show("Silinmek İstenen Kayıtla İlişkili Kayıtlar Bulunmaktadır.Ana Kategori Silme İşlemi İptal Edildi.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Silinmek İstenen Kayıtla İlişkili Kayıtlar Bulunmaktadır.Alt Kategori Silme İşlemi İptal Edildi.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -199,6 +199,7 @@ namespace ERP_Yazilim
         {
             listele();
             AnaKtgDoldur();
+            
         }
 
         private void txtAltktg_TextChanged(object sender, EventArgs e)

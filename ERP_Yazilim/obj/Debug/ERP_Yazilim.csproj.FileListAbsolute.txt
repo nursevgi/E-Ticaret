@@ -20,3 +20,4 @@ E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Propert
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.csproj.GenerateResource.Cache
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\bin\Debug\ERP_Yazilim.exe
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\bin\Debug\ERP_Yazilim.pdb
+E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmil.resources
