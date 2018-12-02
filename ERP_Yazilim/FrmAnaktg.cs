@@ -32,6 +32,16 @@ namespace ERP_Yazilim
             conn.Open();
         }
 
+        public static bool SayisalMi(string deger)
+        {
+            foreach (char chr in deger)
+            {
+                if (!Char.IsNumber(chr))
+                    return false;
+            }
+            return true;
+        }
+
         void listele()
         {
             baglan();
@@ -40,7 +50,7 @@ namespace ERP_Yazilim
             tablo.Load(command.ExecuteReader());
             dganaktg.DataSource = tablo;
             dganaktg.Columns["anakod"].Visible = false;
-            dganaktg.Columns["anagrup"].HeaderText = "ANA KATEGORİLER";
+            dganaktg.Columns["anagrup"].HeaderText = "ANA KATEGORİ";
             conn.Close();
         }
         private void FrmAnaktg_Load(object sender, EventArgs e)
@@ -48,13 +58,13 @@ namespace ERP_Yazilim
             listele();
         }
 
-        void ekleAltktg()
+        void ekleAnaktg()
         {
             baglan();
             command.CommandText = "INSERT INTO anakategori (anagrup) VALUES (@anagrup)";
             command.Parameters.AddWithValue("@anagrup", txtanaktg.Text);
             command.ExecuteNonQuery();
-            MessageBox.Show("Alt Kategori Başarıyla Eklendi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Ana Kategori Başarıyla Eklendi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             conn.Close();
 
             baglan();
@@ -64,7 +74,7 @@ namespace ERP_Yazilim
             listele();
         }
 
-        void guncelleAltktg()
+        void guncelleAnaktg()
         {
             baglan();
             command.CommandText = "UPDATE anakategori SET anagrup=@anagrup WHERE anakod=@anakod";
@@ -72,46 +82,63 @@ namespace ERP_Yazilim
             command.Parameters.AddWithValue("@anakod", Convert.ToInt32(txtanaid.Text));
             command.ExecuteNonQuery();
             conn.Close();
-            MessageBox.Show("Alt Kategori Başarıyla Güncellendi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Ana Kategori Başarıyla Güncellendi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             listele();
         }
 
+        void KaydetAnaKtg()
+        {
+            baglan();
+            command.CommandText = "SELECT COUNT(*) FROM anakategori WHERE anakod=@anakod";
+            command.Parameters.AddWithValue("@anakod", txtanaid.Text);
+
+            int sayi = Convert.ToInt32(command.ExecuteScalar());
+
+            if (sayi > 0)
+            {
+                DialogResult cevap = MessageBox.Show("Ana Kategori Kaydı Güncellenecektir.İşleme Devam Etmek İstiyor Musunuz?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (cevap == DialogResult.Yes)
+                {
+                    guncelleAnaktg();
+                }
+                else
+                {
+                    MessageBox.Show("Ana Kategori Güncelleme İşlemi İptal Edildi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    listele();
+                }
+            }
+            else
+            {
+                ekleAnaktg();
+            }
+        }
+
+
+       
         private void btnkaydet_Click(object sender, EventArgs e)
         {
-            if(txtanaktg.Text=="")
+            if (txtanaktg.Text != "")
+            {
+                if (FrmAnaktg.SayisalMi(txtanaktg.Text) == false)
+                {
+                    KaydetAnaKtg();
+                }
+
+                else
+                {
+                    MessageBox.Show("Ana Kategori Adı Sayısal Değer Olamaz!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtanaktg.Focus();
+                    txtanaktg.SelectAll();
+                }
+            }
+
+            else
             {
                 MessageBox.Show("Ana Kategori Adı Boş Geçilemez!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtanaktg.Focus();
             }
-            else
-            {
-                baglan();
-                command.CommandText = "SELECT COUNT(*) FROM anakategori WHERE anakod=@anakod";
-                command.Parameters.AddWithValue("@anakod", txtanaid.Text);
-
-                int sayi = Convert.ToInt32(command.ExecuteScalar());
-
-                if (sayi > 0)
-                {
-                    DialogResult cevap = MessageBox.Show("Alt Kategori Kaydı Güncellenecektir.İşleme Devam Etmek İstiyor Musunuz?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (cevap == DialogResult.Yes)
-                    {
-                        guncelleAltktg();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Alt Kategori Güncelleme İşlemi İptal Edildi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        listele();
-                    }
-                }
-                else
-                {
-                    ekleAltktg();
-                }
-            }
-
-           
-        }
+         }
+       
 
         private void btnyeni_Click(object sender, EventArgs e)
         {
@@ -123,7 +150,7 @@ namespace ERP_Yazilim
         private void txtanaktg_TextChanged(object sender, EventArgs e)
         {
             baglan();
-            command.CommandText = "SELECT * FROM anakategori WHERE anagrup like @anagrup ORDER BY anakod";
+            command.CommandText = "SELECT * FROM anakategori WHERE anagrup LIKE @anagrup ORDER BY anakod";
             command.Parameters.AddWithValue("@anagrup", "%" + txtanaktg.Text + "%");
 
             DataTable tablo = new DataTable();

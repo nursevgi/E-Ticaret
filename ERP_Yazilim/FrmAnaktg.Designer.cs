@@ -55,10 +55,11 @@
             // 
             // txtanaktg
             // 
+            this.txtanaktg.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtanaktg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtanaktg.Location = new System.Drawing.Point(211, 60);
             this.txtanaktg.Name = "txtanaktg";
-            this.txtanaktg.Size = new System.Drawing.Size(270, 27);
+            this.txtanaktg.Size = new System.Drawing.Size(323, 27);
             this.txtanaktg.TabIndex = 0;
             this.txtanaktg.TextChanged += new System.EventHandler(this.txtanaktg_TextChanged);
             // 
@@ -103,7 +104,7 @@
             this.btnyeni.BackColor = System.Drawing.Color.White;
             this.btnyeni.Image = ((System.Drawing.Image)(resources.GetObject("btnyeni.Image")));
             this.btnyeni.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnyeni.Location = new System.Drawing.Point(198, 109);
+            this.btnyeni.Location = new System.Drawing.Point(223, 110);
             this.btnyeni.Name = "btnyeni";
             this.btnyeni.Size = new System.Drawing.Size(79, 62);
             this.btnyeni.TabIndex = 4;
@@ -117,7 +118,7 @@
             this.btnkaydet.BackColor = System.Drawing.Color.White;
             this.btnkaydet.Image = ((System.Drawing.Image)(resources.GetObject("btnkaydet.Image")));
             this.btnkaydet.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnkaydet.Location = new System.Drawing.Point(305, 109);
+            this.btnkaydet.Location = new System.Drawing.Point(330, 110);
             this.btnkaydet.Name = "btnkaydet";
             this.btnkaydet.Size = new System.Drawing.Size(79, 62);
             this.btnkaydet.TabIndex = 1;
@@ -131,7 +132,7 @@
             this.btnsil.BackColor = System.Drawing.Color.White;
             this.btnsil.Image = ((System.Drawing.Image)(resources.GetObject("btnsil.Image")));
             this.btnsil.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnsil.Location = new System.Drawing.Point(413, 109);
+            this.btnsil.Location = new System.Drawing.Point(438, 110);
             this.btnsil.Name = "btnsil";
             this.btnsil.Size = new System.Drawing.Size(79, 62);
             this.btnsil.TabIndex = 3;
