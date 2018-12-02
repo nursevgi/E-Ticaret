@@ -167,6 +167,9 @@
     <EmbeddedResource Include="Frmil.resx">
       <DependentUpon>Frmil.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frmilce.resx">
+      <DependentUpon>Frmilce.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

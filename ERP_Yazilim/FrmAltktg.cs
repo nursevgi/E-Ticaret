@@ -54,6 +54,7 @@ namespace ERP_Yazilim
             cmbAnaktg.DataSource = tablo;
             cmbAnaktg.DisplayMember = "anagrup";
             cmbAnaktg.ValueMember = "anakod";
+            cmbAnaktg.SelectedIndex = -1;
             conn.Close();
         }
 
@@ -197,9 +198,8 @@ namespace ERP_Yazilim
 
         private void FrmAltktg_Load(object sender, EventArgs e)
         {
-            listele();
             AnaKtgDoldur();
-            
+            listele();
         }
 
         private void txtAltktg_TextChanged(object sender, EventArgs e)
