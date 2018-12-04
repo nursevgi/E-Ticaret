@@ -164,6 +164,9 @@
     <EmbeddedResource Include="FrmAnasayfa.resx">
       <DependentUpon>FrmAnasayfa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frmdepartman.resx">
+      <DependentUpon>Frmdepartman.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frmil.resx">
       <DependentUpon>Frmil.cs</DependentUpon>
     </EmbeddedResource>
