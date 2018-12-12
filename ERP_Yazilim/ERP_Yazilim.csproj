@@ -179,6 +179,9 @@
     <EmbeddedResource Include="Frmsiparisdurum.resx">
       <DependentUpon>Frmsiparisdurum.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frmürün.resx">
+      <DependentUpon>Frmürün.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
