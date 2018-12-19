@@ -26,3 +26,4 @@ E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmkarg
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmdepartman.resources
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmsiparisdurum.resources
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmürün.resources
+E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmalis.resources

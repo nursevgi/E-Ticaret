@@ -179,6 +179,7 @@ namespace ERP_Yazilim
             txtilce.Text = tablo.Rows[0]["ilce"].ToString();
             cmbil.Text = tablo.Rows[0]["ilkod"].ToString();
             conn.Close();
+            listele();
         }
 
         private void btnyeni_Click(object sender, EventArgs e)

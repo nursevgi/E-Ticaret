@@ -155,6 +155,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Frmalis.resx">
+      <DependentUpon>Frmalis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAltktg.resx">
       <DependentUpon>FrmAltktg.cs</DependentUpon>
     </EmbeddedResource>
