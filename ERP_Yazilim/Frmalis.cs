@@ -38,7 +38,7 @@ namespace ERP_Yazilim
         void listele()
         {
             baglan();
-            command.CommandText = "SELECT alis.urunkod,adi,adet,alisfiyati,alistarihi FROM alis,urunler WHERE urunler.urunkod=alis.urunkod ORDER BY alistarihi DESC";
+            command.CommandText = "SELECT alisno,alis.urunkod,adi,adet,alisfiyati,alistarihi FROM alis,urunler WHERE urunler.urunkod=alis.urunkod ORDER BY alistarihi DESC";
             DataTable tablo = new DataTable();
             tablo.Load(command.ExecuteReader());
             dgalinanurunler.DataSource = tablo;
@@ -47,12 +47,14 @@ namespace ERP_Yazilim
             dgalinanurunler.Columns["adet"].HeaderText = "Adet";
             dgalinanurunler.Columns["alisfiyati"].HeaderText = "Ürün Birim Alım Fiyatı";
             dgalinanurunler.Columns["alistarihi"].HeaderText = "Ürün Alım Tarihi";
+            dgalinanurunler.Columns["alisno"].Visible=false;
             conn.Close();
         }
 
 
         void eklealinanurun()
         {
+            txtalistarihi.Text = Convert.ToString(DateTime.Today);
             baglan();
             command.CommandText = "INSERT INTO alis (urunkod,adet,alisfiyati,alistarihi) VALUES (@urunkod,@adet,@alisfiyati,@alistarihi)";
             command.Parameters.AddWithValue("@urunkod", txtbarkod.Text);
@@ -79,7 +81,7 @@ namespace ERP_Yazilim
             command.Parameters.AddWithValue("@urunkod", txtbarkod.Text);
             command.Parameters.AddWithValue("@adet", numerikadet.Value);
             command.Parameters.AddWithValue("@alisfiyati", txtalisbirimfiyati.Text);
-            command.Parameters.AddWithValue("@alistarihi", txtalistarihi.Text);
+            command.Parameters.AddWithValue("@alistarihi", Convert.ToDateTime(txtalistarihi.Text));
             command.Parameters.AddWithValue("@alisno", txtalisid.Text);
             command.ExecuteNonQuery();
             conn.Close();
@@ -118,7 +120,7 @@ namespace ERP_Yazilim
 
         private void btnkaydet_Click(object sender, EventArgs e)
         {
-            txtalistarihi.Text=Convert.ToString(DateTime.Today);
+            
             bool validasyon=false;
              if(txtbarkod.Text!="")
              {
@@ -130,7 +132,7 @@ namespace ERP_Yazilim
                              {
                                 if (FrmAnaktg.SayisalMi(txtalisbirimfiyati.Text) == true)
                                 {
-                                    validasyon=true;
+                                    Kaydetalis();
                                 }
                                 else
                                 {
@@ -164,19 +166,6 @@ namespace ERP_Yazilim
                 txtbarkod.Focus();
              }
 
-
-            //Barkod VT kayıtlı mı kontrolü ekle
-
-            baglan();
-            command.CommandText = "SELECT adi FROM urunler WHERE urunkod=@urunkod";
-            command.Parameters.AddWithValue("@urunkod", txtbarkod.Text);
-            txturunadi.Text = command.ExecuteScalar().ToString();
-            conn.Close();
-     
-            if(validasyon==true)
-            {
-                Kaydetalis();
-            }
          }
 
         private void btnyeni_Click(object sender, EventArgs e)
@@ -188,6 +177,7 @@ namespace ERP_Yazilim
             txturunadi.Clear();
             numerikadet.Value=0;
             txtbarkod.Focus();
+            txtbarkod.Enabled = true;
         }
 
         private void Frmalis_Load(object sender, EventArgs e)
@@ -198,9 +188,74 @@ namespace ERP_Yazilim
 
         private void dgalinanurunler_DoubleClick(object sender, EventArgs e)
         {
-            //Kaydı aktar kodu ekle
+            txtbarkod.Enabled = false;
+            baglan();
+            command.CommandText = "SELECT alisno,alis.urunkod,adi,adet,alisfiyati,alistarihi FROM alis,urunler WHERE urunler.urunkod=alis.urunkod AND alisno=@alisno";
+            command.Parameters.AddWithValue("@alisno", dgalinanurunler.CurrentRow.Cells[0].Value.ToString());
+
+            DataTable tablo = new DataTable();
+            tablo.Load(command.ExecuteReader());
+
+            txtalisid.Text = tablo.Rows[0]["alisno"].ToString();
+            txtbarkod.Text = tablo.Rows[0]["urunkod"].ToString();
+            txturunadi.Text = tablo.Rows[0]["adi"].ToString();
+            numerikadet.Value = Convert.ToInt32(tablo.Rows[0]["adet"]);
+            txtalisbirimfiyati.Text = tablo.Rows[0]["alisfiyati"].ToString();
+            txtalistarihi.Text = tablo.Rows[0]["alistarihi"].ToString();
+            conn.Close();
         }
 
+
+
+        private void btnsil_Click(object sender, EventArgs e)
+        {
+            DialogResult cevap = MessageBox.Show("Seçilen Stok Girişi Kaydı Silinecektir.Bu İşlem Stok Sayısını Değiştirebilir.İşleme Devam Etmek İstiyor Musunuz?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (cevap == DialogResult.Yes)
+            {
+                baglan();
+                command.CommandText = "DELETE FROM alis WHERE alisno=@alisno";
+                command.Parameters.AddWithValue("@alisno", Convert.ToInt32(dgalinanurunler.CurrentRow.Cells[0].Value.ToString()));
+                command.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Stok Girişi Silme İşlemi Başarıyla Gerçekleştirildi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnyeni_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Stok Girişi Silme İşlemi İptal Edildi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+     
+
+        private void txtbarkod_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                baglan();
+                command.CommandText = "SELECT COUNT(*) FROM urunler WHERE urunkod=@urunkod";
+                command.Parameters.AddWithValue("@urunkod", txtbarkod.Text);
+
+
+                int ks = Convert.ToInt32(command.ExecuteScalar());
+                if (ks <= 0)
+                {
+                    txturunadi.Text = "Barkod Kaydı Bulunamadı";
+                    conn.Close();
+                }
+                else
+                {
+                    baglan();
+                    command.CommandText = "SELECT adi FROM urunler WHERE urunkod=@urunkod";
+                    command.Parameters.AddWithValue("@urunkod", txtbarkod.Text);
+                    txturunadi.Text = command.ExecuteScalar().ToString();
+
+                }
+            }
+            catch { }
+            
+        }
+
+       
 
 
 

@@ -459,7 +459,7 @@
             this.btnalis.Name = "btnalis";
             this.btnalis.Size = new System.Drawing.Size(124, 105);
             this.btnalis.TabIndex = 10;
-            this.btnalis.Text = "Ürün Alış İşlemleri";
+            this.btnalis.Text = "Ürün Alış İşlemleri\r\n ( Stok Girişi )";
             this.btnalis.UseVisualStyleBackColor = false;
             this.btnalis.Click += new System.EventHandler(this.btnalis_Click);
             // 
@@ -511,7 +511,7 @@
             this.btnstok.Name = "btnstok";
             this.btnstok.Size = new System.Drawing.Size(124, 105);
             this.btnstok.TabIndex = 13;
-            this.btnstok.Text = "Stok";
+            this.btnstok.Text = "Stok Durumu";
             this.btnstok.UseVisualStyleBackColor = false;
             this.btnstok.Click += new System.EventHandler(this.btnstok_Click);
             // 

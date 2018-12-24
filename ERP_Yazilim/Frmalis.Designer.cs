@@ -47,6 +47,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtalistarihi = new System.Windows.Forms.TextBox();
+            this.btnsil = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgalinanurunler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numerikadet)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +72,7 @@
             this.btnkaydet.BackColor = System.Drawing.Color.White;
             this.btnkaydet.Image = ((System.Drawing.Image)(resources.GetObject("btnkaydet.Image")));
             this.btnkaydet.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnkaydet.Location = new System.Drawing.Point(465, 234);
+            this.btnkaydet.Location = new System.Drawing.Point(421, 229);
             this.btnkaydet.Name = "btnkaydet";
             this.btnkaydet.Size = new System.Drawing.Size(79, 62);
             this.btnkaydet.TabIndex = 3;
@@ -85,7 +86,7 @@
             this.btnyeni.BackColor = System.Drawing.Color.White;
             this.btnyeni.Image = ((System.Drawing.Image)(resources.GetObject("btnyeni.Image")));
             this.btnyeni.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnyeni.Location = new System.Drawing.Point(361, 234);
+            this.btnyeni.Location = new System.Drawing.Point(317, 229);
             this.btnyeni.Name = "btnyeni";
             this.btnyeni.Size = new System.Drawing.Size(79, 62);
             this.btnyeni.TabIndex = 4;
@@ -153,6 +154,7 @@
             this.txtbarkod.Name = "txtbarkod";
             this.txtbarkod.Size = new System.Drawing.Size(323, 27);
             this.txtbarkod.TabIndex = 0;
+            this.txtbarkod.TextChanged += new System.EventHandler(this.txtbarkod_TextChanged);
             // 
             // txtalisid
             // 
@@ -245,12 +247,27 @@
             this.txtalistarihi.TabIndex = 40;
             this.txtalistarihi.TabStop = false;
             // 
+            // btnsil
+            // 
+            this.btnsil.BackColor = System.Drawing.Color.White;
+            this.btnsil.Image = ((System.Drawing.Image)(resources.GetObject("btnsil.Image")));
+            this.btnsil.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnsil.Location = new System.Drawing.Point(525, 229);
+            this.btnsil.Name = "btnsil";
+            this.btnsil.Size = new System.Drawing.Size(79, 62);
+            this.btnsil.TabIndex = 42;
+            this.btnsil.Text = "SİL";
+            this.btnsil.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnsil.UseVisualStyleBackColor = false;
+            this.btnsil.Click += new System.EventHandler(this.btnsil_Click);
+            // 
             // Frmalis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(858, 1045);
+            this.Controls.Add(this.btnsil);
             this.Controls.Add(this.numerikadet);
             this.Controls.Add(this.dgalinanurunler);
             this.Controls.Add(this.btnkaydet);
@@ -300,6 +317,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtalistarihi;
+        private System.Windows.Forms.Button btnsil;
 
     }
 }
