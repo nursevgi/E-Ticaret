@@ -182,6 +182,9 @@
     <EmbeddedResource Include="Frmsiparisdurum.resx">
       <DependentUpon>Frmsiparisdurum.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frmstok.resx">
+      <DependentUpon>Frmstok.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frmürün.resx">
       <DependentUpon>Frmürün.cs</DependentUpon>
     </EmbeddedResource>

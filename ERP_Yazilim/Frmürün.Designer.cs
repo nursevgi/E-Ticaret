@@ -181,6 +181,7 @@
             this.txtstokadedi.Name = "txtstokadedi";
             this.txtstokadedi.Size = new System.Drawing.Size(323, 27);
             this.txtstokadedi.TabIndex = 27;
+            this.txtstokadedi.Text = "0";
             // 
             // label7
             // 

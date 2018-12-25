@@ -220,9 +220,11 @@ namespace ERP_Yazilim
                 conn.Close();
                 MessageBox.Show("Stok Girişi Silme İşlemi Başarıyla Gerçekleştirildi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnyeni_Click(sender, e);
+                listele();
             }
             else
                 MessageBox.Show("Stok Girişi Silme İşlemi İptal Edildi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+       
         }
 
      

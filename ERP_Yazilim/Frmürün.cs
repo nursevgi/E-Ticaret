@@ -37,7 +37,7 @@ namespace ERP_Yazilim
         void listele()
         {
             baglan();
-            command.CommandText = "SELECT urunkod,adi,marka,aciklama,satisfiyati,kdv,anagrup,altgrup FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod ORDER BY adi";
+            command.CommandText = "SELECT urunkod,adi,marka,aciklama,satisfiyati,kdv,anagrup,altgrup,stok FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod ORDER BY adi";
             DataTable tablo = new DataTable();
             tablo.Load(command.ExecuteReader());
             dgurunler.DataSource = tablo;
@@ -49,6 +49,7 @@ namespace ERP_Yazilim
             dgurunler.Columns["kdv"].HeaderText = "KDV";
             dgurunler.Columns["anagrup"].HeaderText = "Ana Kategori";
             dgurunler.Columns["altgrup"].HeaderText = "Alt Kategori";
+            dgurunler.Columns["stok"].HeaderText = "Stok Sayısı";
             cmbAnaKtg.SelectedIndex = -1;
             cmbAltktg.SelectedIndex = -1;
             conn.Close();
@@ -89,7 +90,7 @@ namespace ERP_Yazilim
         void ekleurun()
         {
             baglan();
-            command.CommandText = "INSERT INTO urunler (urunkod,adi,marka,aciklama,satisfiyati,kdv,altkod,anakod) VALUES (@urunkod,@adi,@marka,@aciklama,@satisfiyati,@kdv,@altkod,@anakod)";
+            command.CommandText = "INSERT INTO urunler (urunkod,adi,marka,aciklama,satisfiyati,kdv,altkod,anakod,stok) VALUES (@urunkod,@adi,@marka,@aciklama,@satisfiyati,@kdv,@altkod,@anakod,@stok)";
             command.Parameters.AddWithValue("@urunkod", txtbarkod.Text);
             command.Parameters.AddWithValue("@adi", txturunadi.Text);
             command.Parameters.AddWithValue("@marka", txtmarka.Text);
@@ -98,6 +99,7 @@ namespace ERP_Yazilim
             command.Parameters.AddWithValue("@kdv", txtkdv.Text);
             command.Parameters.AddWithValue("@altkod", cmbAltktg.SelectedValue);
             command.Parameters.AddWithValue("@anakod", cmbAnaKtg.SelectedValue);
+            command.Parameters.AddWithValue("@stok", txtstokadedi.Text);
             command.ExecuteNonQuery();
             conn.Close();
             listele();
@@ -334,6 +336,7 @@ namespace ERP_Yazilim
             txtkdv.Text = tablo.Rows[0]["kdv"].ToString();
             cmbAnaKtg.Text = tablo.Rows[0]["anakod"].ToString();
             cmbAltktg.Text = tablo.Rows[0]["altkod"].ToString();
+            txtstokadedi.Text = tablo.Rows[0]["stok"].ToString();
             conn.Close();
 
             baglan();
@@ -359,6 +362,7 @@ namespace ERP_Yazilim
             txturunadi.Clear();
             cmbAnaKtg.SelectedIndex = -1;
             cmbAltktg.SelectedIndex = -1;
+            txtstokadedi.Text = "0";
             listele();
             txtbarkod.Focus();
         }
