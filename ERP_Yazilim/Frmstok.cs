@@ -76,5 +76,51 @@ namespace ERP_Yazilim
             renklendir();
         
         }
+
+        private void txtaranan_TextChanged(object sender, EventArgs e)
+        {
+           
+               try
+              {
+                baglan();
+
+                if (rburunadi.Checked)
+                {
+                    command.CommandText = "SELECT urunkod,adi,marka,anagrup,altgrup,stok FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod AND adi LIKE @adi ORDER BY stok";
+                    command.Parameters.AddWithValue("@adi", "%" + txtaranan.Text + "%");
+                }
+
+                else if (rbadet.Checked)
+                {
+                    command.CommandText = "SELECT urunkod,adi,marka,anagrup,altgrup,stok FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod AND stok LIKE @stok ORDER BY stok";
+                    command.Parameters.AddWithValue("@stok", "%" + txtaranan.Text + "%");
+                }
+
+                else if (rbmarka.Checked)
+                {
+                    command.CommandText = "SELECT urunkod,adi,marka,anagrup,altgrup,stok FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod AND marka LIKE @marka ORDER BY stok";
+                    command.Parameters.AddWithValue("@marka", "%" + txtaranan.Text + "%");
+                }
+
+                else if (rbbarkod.Checked)
+                {
+                    command.CommandText = "SELECT urunkod,adi,marka,anagrup,altgrup,stok FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod AND urunkod LIKE @barkod ORDER BY stok";
+                    command.Parameters.AddWithValue("@barkod", "%" + txtaranan.Text + "%");
+                }
+
+                else { }
+
+           }
+               catch { } 
+          
+            
+                DataTable tablo = new DataTable();
+                tablo.Load(command.ExecuteReader());
+                dgstoklar.DataSource = tablo;
+                conn.Close();
+                renklendir();
+            }
+            
+        }
     }
-}
+

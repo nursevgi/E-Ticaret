@@ -33,7 +33,7 @@
             this.rbbarkod = new System.Windows.Forms.RadioButton();
             this.rbadet = new System.Windows.Forms.RadioButton();
             this.rbmarka = new System.Windows.Forms.RadioButton();
-            this.rbtumu = new System.Windows.Forms.RadioButton();
+            this.rburunadi = new System.Windows.Forms.RadioButton();
             this.dgstoklar = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgstoklar)).BeginInit();
@@ -57,6 +57,7 @@
             this.txtaranan.Name = "txtaranan";
             this.txtaranan.Size = new System.Drawing.Size(323, 27);
             this.txtaranan.TabIndex = 2;
+            this.txtaranan.TextChanged += new System.EventHandler(this.txtaranan_TextChanged);
             // 
             // rbbarkod
             // 
@@ -91,18 +92,18 @@
             this.rbmarka.Text = "Marka";
             this.rbmarka.UseVisualStyleBackColor = true;
             // 
-            // rbtumu
+            // rburunadi
             // 
-            this.rbtumu.AutoSize = true;
-            this.rbtumu.Checked = true;
-            this.rbtumu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbtumu.Location = new System.Drawing.Point(272, 151);
-            this.rbtumu.Name = "rbtumu";
-            this.rbtumu.Size = new System.Drawing.Size(120, 24);
-            this.rbtumu.TabIndex = 4;
-            this.rbtumu.TabStop = true;
-            this.rbtumu.Text = "Tüm Alanlar";
-            this.rbtumu.UseVisualStyleBackColor = true;
+            this.rburunadi.AutoSize = true;
+            this.rburunadi.Checked = true;
+            this.rburunadi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rburunadi.Location = new System.Drawing.Point(272, 151);
+            this.rburunadi.Name = "rburunadi";
+            this.rburunadi.Size = new System.Drawing.Size(95, 24);
+            this.rburunadi.TabIndex = 4;
+            this.rburunadi.TabStop = true;
+            this.rburunadi.Text = "Ürün Adı";
+            this.rburunadi.UseVisualStyleBackColor = true;
             // 
             // dgstoklar
             // 
@@ -136,7 +137,7 @@
             this.ClientSize = new System.Drawing.Size(1098, 882);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgstoklar);
-            this.Controls.Add(this.rbtumu);
+            this.Controls.Add(this.rburunadi);
             this.Controls.Add(this.rbadet);
             this.Controls.Add(this.rbmarka);
             this.Controls.Add(this.rbbarkod);
@@ -159,7 +160,7 @@
         private System.Windows.Forms.RadioButton rbbarkod;
         private System.Windows.Forms.RadioButton rbadet;
         private System.Windows.Forms.RadioButton rbmarka;
-        private System.Windows.Forms.RadioButton rbtumu;
+        private System.Windows.Forms.RadioButton rburunadi;
         private System.Windows.Forms.DataGridView dgstoklar;
         private System.Windows.Forms.Label label1;
     }

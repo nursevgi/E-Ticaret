@@ -179,6 +179,9 @@
     <EmbeddedResource Include="Frmkargo.resx">
       <DependentUpon>Frmkargo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frmmusteri.resx">
+      <DependentUpon>Frmmusteri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frmsiparisdurum.resx">
       <DependentUpon>Frmsiparisdurum.cs</DependentUpon>
     </EmbeddedResource>
