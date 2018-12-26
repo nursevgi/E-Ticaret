@@ -54,13 +54,13 @@ namespace ERP_Yazilim
 
         void eklealinanurun()
         {
-            txtalistarihi.Text = Convert.ToString(DateTime.Today);
+            txtalistarihi.Text = DateTime.Today.ToString("d");
             baglan();
             command.CommandText = "INSERT INTO alis (urunkod,adet,alisfiyati,alistarihi) VALUES (@urunkod,@adet,@alisfiyati,@alistarihi)";
             command.Parameters.AddWithValue("@urunkod", txtbarkod.Text);
             command.Parameters.AddWithValue("@adet", numerikadet.Value);
             command.Parameters.AddWithValue("@alisfiyati", txtalisbirimfiyati.Text);
-            command.Parameters.AddWithValue("@alistarihi", Convert.ToDateTime(txtalistarihi.Text));
+            command.Parameters.AddWithValue("@alistarihi", txtalistarihi.Text);
             command.ExecuteNonQuery();
             conn.Close();
 
@@ -121,7 +121,7 @@ namespace ERP_Yazilim
         private void btnkaydet_Click(object sender, EventArgs e)
         {
             
-            bool validasyon=false;
+  
              if(txtbarkod.Text!="")
              {
                  if(FrmAnaktg.SayisalMi(txtbarkod.Text)==true)
