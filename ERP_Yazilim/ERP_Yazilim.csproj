@@ -182,6 +182,9 @@
     <EmbeddedResource Include="Frmmusteri.resx">
       <DependentUpon>Frmmusteri.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frmpersonel.resx">
+      <DependentUpon>Frmpersonel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frmsiparisdurum.resx">
       <DependentUpon>Frmsiparisdurum.cs</DependentUpon>
     </EmbeddedResource>

@@ -163,7 +163,7 @@ namespace ERP_Yazilim
         }
 
 
-        public bool MailKontrolu(string mail)
+        public static bool MailKontrolu(string mail)
         {
             string pattern = null;
             pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
@@ -242,6 +242,7 @@ namespace ERP_Yazilim
 
         private void txtTC_TextChanged(object sender, EventArgs e)
         {
+            baglan();
             command.CommandText = "SELECT mustc,ad,soyad,tel,eposta,adres,il,ilce,kayittarihi FROM musteri,iller,ilceler WHERE iller.ilkod=musteri.ilkod AND ilceler.ilcekod=musteri.ilcekod AND mustc=@mustc ORDER BY ad";
             command.Parameters.AddWithValue("@mustc", "%" + txtTC.Text + "%");
             DataTable tablo = new DataTable();
