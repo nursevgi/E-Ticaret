@@ -270,6 +270,14 @@ namespace ERP_Yazilim
             cmbilce.Text = tablo.Rows[0]["ilce"].ToString();
             txtkayittarihi.Text = tablo.Rows[0]["kayittarihi"].ToString();
             conn.Close();
+
+            if(Frmsatis.durum==true)
+            {
+                Frmsatis.mustc = tablo.Rows[0]["mustc"].ToString();
+                Frmsatis.musadsoyad = tablo.Rows[0]["ad"].ToString() + " " + tablo.Rows[0]["soyad"].ToString();
+                this.Close();
+            }
+           
         }
 
 
@@ -319,6 +327,11 @@ namespace ERP_Yazilim
 
             listeleMusteri();
 
+        }
+
+        private void btnyeni_Click(object sender, EventArgs e)
+        {
+            temizle();
         }
     }
 }

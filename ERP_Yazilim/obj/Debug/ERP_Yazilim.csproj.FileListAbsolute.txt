@@ -30,3 +30,4 @@ E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmalis
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmstok.resources
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmmusteri.resources
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmpersonel.resources
+E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmsatis.resources

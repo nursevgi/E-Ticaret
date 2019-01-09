@@ -268,6 +268,7 @@
             this.btnyeni.Text = "YENİ";
             this.btnyeni.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnyeni.UseVisualStyleBackColor = false;
+            this.btnyeni.Click += new System.EventHandler(this.btnyeni_Click);
             // 
             // dgmusteri
             // 

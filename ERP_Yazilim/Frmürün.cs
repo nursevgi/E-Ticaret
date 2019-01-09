@@ -339,14 +339,25 @@ namespace ERP_Yazilim
             txtstokadedi.Text = tablo.Rows[0]["stok"].ToString();
             conn.Close();
 
-            baglan();
-            command.CommandText = "SELECT TOP 1 resimyol FROM urunresim WHERE urunkod=@urunkod";
-            command.Parameters.AddWithValue("@urunkod", dgurunler.CurrentRow.Cells[0].Value.ToString());
+            try
+            {
+                baglan();
+                command.CommandText = "SELECT TOP 1 resimyol FROM urunresim WHERE urunkod=@urunkod";
+                command.Parameters.AddWithValue("@urunkod", dgurunler.CurrentRow.Cells[0].Value.ToString());
 
-            pbResim.ImageLocation = command.ExecuteScalar().ToString();
+                pbResim.ImageLocation = command.ExecuteScalar().ToString();
 
-            conn.Close();
+                conn.Close();
+            }
+            catch
+            { }
 
+            if (Frmsatis.durum == true)
+            {
+                Frmsatis.barkod = dgurunler.CurrentRow.Cells[0].Value.ToString();
+                Frmsatis.urunadi = dgurunler.CurrentRow.Cells[1].Value.ToString();
+                this.Close();
+            }
         }
 
         private void btnyeni_Click(object sender, EventArgs e)

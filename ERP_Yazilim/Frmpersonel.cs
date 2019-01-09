@@ -90,8 +90,8 @@ namespace ERP_Yazilim
             DataTable tablo = new DataTable();
             tablo.Load(command.ExecuteReader());
             cmbdep.DataSource = tablo;
-            cmbdep.DisplayMember = "depkod";
-            cmbdep.ValueMember = "depadi";
+            cmbdep.DisplayMember = "depadi";
+            cmbdep.ValueMember = "depkod";
             conn.Close();
         }
 
@@ -115,7 +115,7 @@ namespace ERP_Yazilim
         void eklepersonel()
         {
             baglan();
-            command.CommandText = "INSERT INTO personel (calisantc,ad,soyad,tel,eposta,adres,ilkod,ilcekod,depkod,isbastarih,sifre) VALUES (@calisantc,@ad,@soyad,@tel,@eposta,@adres,@ilkod,@ilcekod,@depkod,@isbastarih,@sifre)";
+            command.CommandText = "INSERT INTO calisan (calisantc,ad,soyad,tel,eposta,adres,ilkod,ilcekod,depkod,isbastarih,sifre) VALUES (@calisantc,@ad,@soyad,@tel,@eposta,@adres,@ilkod,@ilcekod,@depkod,@isbastarih,@sifre)";
             command.Parameters.AddWithValue("@calisantc", txtTC.Text);
             command.Parameters.AddWithValue("@ad", txtad.Text);
             command.Parameters.AddWithValue("@soyad", txtsoyad.Text);
@@ -125,19 +125,19 @@ namespace ERP_Yazilim
             command.Parameters.AddWithValue("@ilkod", cmbil.SelectedValue);
             command.Parameters.AddWithValue("@ilcekod", cmbilce.SelectedValue);
             command.Parameters.AddWithValue("@depkod", cmbdep.SelectedValue);
-            command.Parameters.AddWithValue("@isbastarihi", txtbastarih.Text);
+            command.Parameters.AddWithValue("@isbastarih", txtbastarih.Text);
             command.Parameters.AddWithValue("@sifre", txtsifre.Text);
             command.ExecuteNonQuery();
             conn.Close();
             listelePersonel();
-            MessageBox.Show("Perosnel Başarıyla Eklendi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Personel Başarıyla Eklendi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
         void guncellepersonel()
         {
             baglan();
-            command.CommandText = "UPDATE personel SET ad=@ad,soyad=@soyad,tel=@tel,eposta=@eposta,adres=@adres,ilkod=@ilkod,ilcekod=@ilcekod,depkod=@depkod,isbastarih=@isbastarih,sifre=@sifre WHERE calisantc=@calisantc";
+            command.CommandText = "UPDATE calisan SET ad=@ad,soyad=@soyad,tel=@tel,eposta=@eposta,adres=@adres,ilkod=@ilkod,ilcekod=@ilcekod,depkod=@depkod,isbastarih=@isbastarih,sifre=@sifre WHERE calisantc=@calisantc";
             command.Parameters.AddWithValue("@ad", txtad.Text);
             command.Parameters.AddWithValue("@soyad", txtsoyad.Text);
             command.Parameters.AddWithValue("@tel", mtxttel.Text);
@@ -159,7 +159,7 @@ namespace ERP_Yazilim
         void Kaydetpersonel()
         {
             baglan();
-            command.CommandText = "SELECT COUNT(*) FROM personel WHERE calisantc=@calisantc";
+            command.CommandText = "SELECT COUNT(*) FROM calisan WHERE calisantc=@calisantc";
             command.Parameters.AddWithValue("@calisantc", txtTC.Text);
 
             int sayi = Convert.ToInt32(command.ExecuteScalar());
@@ -291,6 +291,13 @@ namespace ERP_Yazilim
             txtbastarih.Text = tablo.Rows[0]["isbastarih"].ToString();
             txtsifre.Text = tablo.Rows[0]["sifre"].ToString();
             conn.Close();
+
+            if (Frmsatis.durum == true)
+            {
+                Frmsatis.personeltc = dgpersonel.CurrentRow.Cells[0].Value.ToString();
+                Frmsatis.personeladsoyad = dgpersonel.CurrentRow.Cells[1].Value.ToString() + " " + dgpersonel.CurrentRow.Cells[2].Value.ToString();
+                this.Close();
+            }
         }
 
         void temizle()
