@@ -154,7 +154,6 @@
             // 
             // txtsipdurid
             // 
-            this.txtsipdurid.Enabled = false;
             this.txtsipdurid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtsipdurid.Location = new System.Drawing.Point(42, 0);
             this.txtsipdurid.Name = "txtsipdurid";

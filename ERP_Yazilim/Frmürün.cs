@@ -50,8 +50,6 @@ namespace ERP_Yazilim
             dgurunler.Columns["anagrup"].HeaderText = "Ana Kategori";
             dgurunler.Columns["altgrup"].HeaderText = "Alt Kategori";
             dgurunler.Columns["stok"].HeaderText = "Stok Sayısı";
-            cmbAnaKtg.SelectedIndex = -1;
-            cmbAltktg.SelectedIndex = -1;
             conn.Close();
         }
 
@@ -71,19 +69,20 @@ namespace ERP_Yazilim
 
         void AltKtgDoldur()
         {
-            try
-            {
-                baglan();
-                command.CommandText = "SELECT * FROM altkategori WHERE anakod=@anakod";
-                command.Parameters.AddWithValue("@anakod", cmbAnaKtg.SelectedValue);
-                DataTable tablo = new DataTable();
-                tablo.Load(command.ExecuteReader());
-                cmbAltktg.DataSource = tablo;
-                cmbAltktg.DisplayMember = "altgrup";
-                cmbAltktg.ValueMember = "altkod";
-                conn.Close();
-            }
-            catch { }
+               try
+               {
+                   baglan();
+                   command.CommandText = "SELECT * FROM altkategori WHERE anakod=@anakod";
+                   command.Parameters.AddWithValue("@anakod", cmbAnaKtg.SelectedValue);
+                   DataTable tablo = new DataTable();
+                   tablo.Load(command.ExecuteReader());
+                   cmbAltktg.DataSource = tablo;
+                   cmbAltktg.DisplayMember = "altgrup";
+                   cmbAltktg.ValueMember = "altkod";
+                   conn.Close();
+               }
+               catch { } 
+          
            
         }
 
@@ -180,8 +179,9 @@ namespace ERP_Yazilim
 
         private void Frmürün_Load(object sender, EventArgs e)
         {
-            AnaktgDoldur();
+            
             listele();
+            AnaktgDoldur();
         }
 
        
@@ -280,23 +280,26 @@ namespace ERP_Yazilim
 
                 if (txtbarkod.Text != "" && txturunadi.Text != "")
                 {
-                    command.CommandText = "SELECT * FROM urunler WHERE urunkod LIKE @urunkod AND adi LIKE @adi ORDER BY urunkod";
+                    command.CommandText = "SELECT urunkod,adi,marka,aciklama,satisfiyati,kdv,anagrup,altgrup,stok FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod AND urunkod LIKE @urunkod AND adi LIKE @adi ORDER BY adi";
                     command.Parameters.AddWithValue("@urunkod", "%" + txtbarkod.Text + "%");
                     command.Parameters.AddWithValue("@adi", "%" + txturunadi.Text + "%");
                 }
 
                 else if (txtbarkod.Text != "")
                 {
-                    command.CommandText = "SELECT * FROM urunler WHERE urunkod LIKE @urunkod ORDER BY urunkod";
+                    command.CommandText = "SELECT urunkod,adi,marka,aciklama,satisfiyati,kdv,anagrup,altgrup,stok FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod AND urunkod LIKE @urunkod ORDER BY adi";
                     command.Parameters.AddWithValue("@urunkod", "%" + txtbarkod.Text + "%");
                 }
 
                 else if (txturunadi.Text != "")
                 {
-                    command.CommandText = "SELECT * FROM urunler WHERE adi LIKE @adi ORDER BY urunkod";
+                    command.CommandText = "SELECT urunkod,adi,marka,aciklama,satisfiyati,kdv,anagrup,altgrup,stok FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod AND adi LIKE @adi ORDER BY adi";
                     command.Parameters.AddWithValue("@adi", "%" + txturunadi.Text + "%");
                 }
-                else { }
+                else 
+                {
+                    listele();
+                }
 
                 DataTable tablo = new DataTable();
                 tablo.Load(command.ExecuteReader());
@@ -322,7 +325,7 @@ namespace ERP_Yazilim
         {
 
             baglan();
-            command.CommandText = "SELECT * FROM urunler WHERE urunkod=@urunkod";
+            command.CommandText = "SELECT urunkod,adi,marka,aciklama,satisfiyati,kdv,anagrup,altgrup,stok FROM urunler,anakategori,altkategori WHERE anakategori.anakod=urunler.anakod AND altkategori.altkod=urunler.altkod AND urunkod=@urunkod ORDER BY adi";
             command.Parameters.AddWithValue("@urunkod", dgurunler.CurrentRow.Cells[0].Value.ToString());
 
             DataTable tablo = new DataTable();
@@ -334,8 +337,8 @@ namespace ERP_Yazilim
             txtaciklama.Text = tablo.Rows[0]["aciklama"].ToString();
             txtsatisfiyati.Text = tablo.Rows[0]["satisfiyati"].ToString();
             txtkdv.Text = tablo.Rows[0]["kdv"].ToString();
-            cmbAnaKtg.Text = tablo.Rows[0]["anakod"].ToString();
-            cmbAltktg.Text = tablo.Rows[0]["altkod"].ToString();
+            cmbAnaKtg.Text = tablo.Rows[0]["anagrup"].ToString();
+            cmbAltktg.Text = tablo.Rows[0]["altgrup"].ToString();
             txtstokadedi.Text = tablo.Rows[0]["stok"].ToString();
             conn.Close();
 
@@ -449,12 +452,10 @@ namespace ERP_Yazilim
         private void cmbAnaKtg_SelectedIndexChanged(object sender, EventArgs e)
         {
             AltKtgDoldur();
+            
         }
 
-        private void dgurunler_Click(object sender, EventArgs e)
-        {
-            dgurunler_DoubleClick(sender, e);
-        }
+       
 
 
 

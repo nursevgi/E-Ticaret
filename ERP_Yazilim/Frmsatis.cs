@@ -198,5 +198,47 @@ namespace ERP_Yazilim
 
             lbltoplamtutar.Text=(Convert.ToInt32(lbltoplamtutar.Text)+Convert.ToInt32(numerikadet.Value)*Convert.ToInt32(txtsatisbirimfiyati.Text)).ToString();
         }
+
+        private void btnyeni_Click(object sender, EventArgs e)
+        {
+            baglan();
+            command.CommandText = "SELECT COUNT(*) FROM satis";
+            int satisno = Convert.ToInt32(command.ExecuteScalar());
+
+            txtsatisno.Text = Convert.ToString( satisno+ 1) ;
+            txtbarkod.Clear();
+            txtsatisbirimfiyati.Clear();
+            txtfaturano.Clear();
+            txturunadi.Clear();
+            numerikadet.Value = 0;
+        }
+
+        private void btnkaydet_Click(object sender, EventArgs e)
+        {
+            baglan();
+            command.CommandText = "SELECT MAX(faturano) FROM satis";
+            int sonfaturano = Convert.ToInt32(command.ExecuteScalar());
+            txtfaturano.Text = (sonfaturano + 1).ToString();
+            conn.Close();
+
+            
+            for (int i=0;i<mussepet.Rows.Count;i++)
+            {
+                baglan();
+                command.CommandText = "INSERT INTO satis (faturano,urunkod,adet,satisfiyati,mustc,calisantc,satistarihi) VALUES (@faturano,@urunkod,@adet,@satisfiyati,@mustc,@calisantc,@satistarihi)";
+                command.Parameters.AddWithValue("@faturano",txtfaturano.Text);
+                command.Parameters.AddWithValue("@urunkod",mussepet.Rows[i][0]);
+                command.Parameters.AddWithValue("@adet", mussepet.Rows[i][2]);
+                command.Parameters.AddWithValue("@satisfiyati",mussepet.Rows[i][3]);
+                command.Parameters.AddWithValue("@mustc", txtmusteritc.Text);
+                command.Parameters.AddWithValue("@calisantc",txtpersoneltc.Text);
+                command.Parameters.AddWithValue("@satistarihi", mussepet.Rows[i][4].ToString());
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+
+            MessageBox.Show("Ürün Satışı BAŞARILI", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+        }
     }
 }

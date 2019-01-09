@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frmsatis));
-            this.txtsatiskod = new System.Windows.Forms.TextBox();
+            this.txtfaturano = new System.Windows.Forms.TextBox();
             this.numerikadet = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -59,21 +59,22 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txturunadi = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.txtsatisno = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numerikadet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgmusterisepet)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtsatiskod
+            // txtfaturano
             // 
-            this.txtsatiskod.BackColor = System.Drawing.Color.LavenderBlush;
-            this.txtsatiskod.Enabled = false;
-            this.txtsatiskod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtsatiskod.Location = new System.Drawing.Point(12, 199);
-            this.txtsatiskod.Name = "txtsatiskod";
-            this.txtsatiskod.Size = new System.Drawing.Size(45, 27);
-            this.txtsatiskod.TabIndex = 37;
-            this.txtsatiskod.TabStop = false;
-            this.txtsatiskod.Visible = false;
+            this.txtfaturano.BackColor = System.Drawing.Color.LavenderBlush;
+            this.txtfaturano.Enabled = false;
+            this.txtfaturano.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtfaturano.Location = new System.Drawing.Point(12, 199);
+            this.txtfaturano.Name = "txtfaturano";
+            this.txtfaturano.Size = new System.Drawing.Size(45, 27);
+            this.txtfaturano.TabIndex = 37;
+            this.txtfaturano.TabStop = false;
+            this.txtfaturano.Visible = false;
             // 
             // numerikadet
             // 
@@ -225,6 +226,7 @@
             this.btnkaydet.Text = "SATIN AL";
             this.btnkaydet.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnkaydet.UseVisualStyleBackColor = false;
+            this.btnkaydet.Click += new System.EventHandler(this.btnkaydet_Click);
             // 
             // btnyeni
             // 
@@ -238,6 +240,7 @@
             this.btnyeni.Text = "YENİ";
             this.btnyeni.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnyeni.UseVisualStyleBackColor = false;
+            this.btnyeni.Click += new System.EventHandler(this.btnyeni_Click);
             // 
             // btnsepeteekle
             // 
@@ -389,6 +392,18 @@
             this.label11.TabIndex = 47;
             this.label11.Text = "Ürün Adı:";
             // 
+            // txtsatisno
+            // 
+            this.txtsatisno.BackColor = System.Drawing.Color.LavenderBlush;
+            this.txtsatisno.Enabled = false;
+            this.txtsatisno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtsatisno.Location = new System.Drawing.Point(12, 166);
+            this.txtsatisno.Name = "txtsatisno";
+            this.txtsatisno.Size = new System.Drawing.Size(45, 27);
+            this.txtsatisno.TabIndex = 37;
+            this.txtsatisno.TabStop = false;
+            this.txtsatisno.Visible = false;
+            // 
             // Frmsatis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -424,7 +439,8 @@
             this.Controls.Add(this.txtmusteritc);
             this.Controls.Add(this.txtsatisbirimfiyati);
             this.Controls.Add(this.txtbarkod);
-            this.Controls.Add(this.txtsatiskod);
+            this.Controls.Add(this.txtsatisno);
+            this.Controls.Add(this.txtfaturano);
             this.Name = "Frmsatis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ürün Satış İşlemleri";
@@ -438,7 +454,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtsatiskod;
+        private System.Windows.Forms.TextBox txtfaturano;
         private System.Windows.Forms.NumericUpDown numerikadet;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -468,5 +484,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txturunadi;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtsatisno;
     }
 }

@@ -310,7 +310,6 @@
             this.dgurunler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgurunler.Size = new System.Drawing.Size(760, 638);
             this.dgurunler.TabIndex = 36;
-            this.dgurunler.Click += new System.EventHandler(this.dgurunler_Click);
             this.dgurunler.DoubleClick += new System.EventHandler(this.dgurunler_DoubleClick);
             // 
             // label11

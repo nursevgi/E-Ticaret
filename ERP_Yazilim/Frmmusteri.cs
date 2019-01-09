@@ -240,16 +240,7 @@ namespace ERP_Yazilim
             } 
         }
 
-        private void txtTC_TextChanged(object sender, EventArgs e)
-        {
-            baglan();
-            command.CommandText = "SELECT mustc,ad,soyad,tel,eposta,adres,il,ilce,kayittarihi FROM musteri,iller,ilceler WHERE iller.ilkod=musteri.ilkod AND ilceler.ilcekod=musteri.ilcekod AND mustc=@mustc ORDER BY ad";
-            command.Parameters.AddWithValue("@mustc", "%" + txtTC.Text + "%");
-            DataTable tablo = new DataTable();
-            tablo.Load(command.ExecuteReader());
-            dgmusteri.DataSource = tablo;
-            conn.Close();
-        }
+       
 
         private void dgmusteri_DoubleClick(object sender, EventArgs e)
         {
@@ -273,8 +264,8 @@ namespace ERP_Yazilim
 
             if(Frmsatis.durum==true)
             {
-                Frmsatis.mustc = tablo.Rows[0]["mustc"].ToString();
-                Frmsatis.musadsoyad = tablo.Rows[0]["ad"].ToString() + " " + tablo.Rows[0]["soyad"].ToString();
+                Frmsatis.mustc = dgmusteri.CurrentRow.Cells[0].Value.ToString();
+                Frmsatis.musadsoyad = dgmusteri.CurrentRow.Cells[1].Value.ToString()+ " " + dgmusteri.CurrentRow.Cells[2].Value.ToString();
                 this.Close();
             }
            
@@ -332,6 +323,17 @@ namespace ERP_Yazilim
         private void btnyeni_Click(object sender, EventArgs e)
         {
             temizle();
+        }
+
+        private void txtTC_TextChanged(object sender, EventArgs e)
+        {
+            baglan();
+            command.CommandText = "SELECT mustc,ad,soyad,tel,eposta,adres,il,ilce,kayittarihi FROM musteri,iller,ilceler WHERE iller.ilkod=musteri.ilkod AND ilceler.ilcekod=musteri.ilcekod AND mustc LIKE @mustc ORDER BY ad";
+            command.Parameters.AddWithValue("@mustc", "%" + txtTC.Text + "%");
+            DataTable tablo = new DataTable();
+            tablo.Load(command.ExecuteReader());
+            dgmusteri.DataSource = tablo;
+            conn.Close();
         }
     }
 }

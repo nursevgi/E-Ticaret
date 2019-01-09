@@ -84,7 +84,11 @@ namespace ERP_Yazilim
 
             int sayi = Convert.ToInt32(command.ExecuteScalar());
 
-            if (sayi >= 0)
+            if (sayi <= 0)
+            {
+                eklesipdur();
+            }
+            else
             {
                 DialogResult cevap = MessageBox.Show("Sipariş Durumu Kaydı Güncellenecektir.İşleme Devam Etmek İstiyor Musunuz?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (cevap == DialogResult.Yes)
@@ -97,10 +101,8 @@ namespace ERP_Yazilim
                     listele();
                 }
             }
-            else
-            {
-                eklesipdur();
-            }
+           
+            
         }
 
         private void btnkaydet_Click(object sender, EventArgs e)
@@ -155,7 +157,7 @@ namespace ERP_Yazilim
             DataTable tablo = new DataTable();
             tablo.Load(command.ExecuteReader());
 
-            txtsipdur.Text = tablo.Rows[0]["sipdurno"].ToString();
+            txtsipdurid.Text = tablo.Rows[0]["sipdurno"].ToString();
             txtsipdur.Text = tablo.Rows[0]["durum"].ToString();
             conn.Close();
         }

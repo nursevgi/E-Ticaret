@@ -261,7 +261,7 @@ namespace ERP_Yazilim
         private void txtTC_TextChanged(object sender, EventArgs e)
         {
             baglan();
-            command.CommandText = "SELECT calisantc,ad,soyad,tel,eposta,adres,il,ilce,depadi,isbastarih,sifre FROM calisan,iller,ilceler,departman WHERE iller.ilkod=calisan.ilkod AND ilceler.ilcekod=calisan.ilcekod AND departman.depkod=calisan.depkod ORDER BY ad";
+            command.CommandText = "SELECT calisantc,ad,soyad,tel,eposta,adres,il,ilce,depadi,isbastarih,sifre FROM calisan,iller,ilceler,departman WHERE iller.ilkod=calisan.ilkod AND ilceler.ilcekod=calisan.ilcekod AND departman.depkod=calisan.depkod AND calisantc LIKE @calisantc ORDER BY ad";
             command.Parameters.AddWithValue("@calisantc", "%" + txtTC.Text + "%");
             DataTable tablo = new DataTable();
             tablo.Load(command.ExecuteReader());
@@ -273,7 +273,7 @@ namespace ERP_Yazilim
         private void dgpersonel_DoubleClick(object sender, EventArgs e)
         {
             baglan();
-            command.CommandText = "SELECT calisantc,ad,soyad,tel,eposta,adres,il,ilce,depadi,isbastarih,sifre FROM calisan,iller,ilceler,departman WHERE iller.ilkod=calisan.ilkod AND ilceler.ilcekod=calisan.ilcekod AND departman.depkod=calisan.depkod ORDER BY ad";
+            command.CommandText = "SELECT calisantc,ad,soyad,tel,eposta,adres,il,ilce,depadi,isbastarih,sifre FROM calisan,iller,ilceler,departman WHERE iller.ilkod=calisan.ilkod AND ilceler.ilcekod=calisan.ilcekod AND departman.depkod=calisan.depkod AND calisantc=@calisantc ORDER BY ad";
             command.Parameters.AddWithValue("@calisantc",dgpersonel.CurrentRow.Cells[0].Value.ToString());
 
             DataTable tablo = new DataTable();
