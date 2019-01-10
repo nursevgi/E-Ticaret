@@ -170,6 +170,9 @@
     <EmbeddedResource Include="Frmdepartman.resx">
       <DependentUpon>Frmdepartman.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frmiade.resx">
+      <DependentUpon>Frmiade.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frmil.resx">
       <DependentUpon>Frmil.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frmsatis.resx">
       <DependentUpon>Frmsatis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmsiparis.resx">
+      <DependentUpon>Frmsiparis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frmsiparisdurum.resx">
       <DependentUpon>Frmsiparisdurum.cs</DependentUpon>

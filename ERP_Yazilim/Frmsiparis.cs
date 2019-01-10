@@ -16,5 +16,10 @@ namespace ERP_Yazilim
         {
             InitializeComponent();
         }
+
+        private void Frmsiparis_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

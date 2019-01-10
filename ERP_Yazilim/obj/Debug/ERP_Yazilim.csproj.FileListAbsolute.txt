@@ -31,3 +31,5 @@ E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmstok
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmmusteri.resources
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmpersonel.resources
 E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmsatis.resources
+E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmiade.resources
+E:\2019_ETICARET\E-Ticaret\ERP_Yazilim\ERP_Yazilim\obj\Debug\ERP_Yazilim.Frmsiparis.resources
