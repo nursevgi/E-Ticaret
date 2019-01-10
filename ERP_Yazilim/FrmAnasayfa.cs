@@ -113,24 +113,30 @@ namespace ERP_Yazilim
 
         private void altmenuSifre_Click(object sender, EventArgs e)
         {
-            Frmsifre frmsifre = new Frmsifre();
-            frmsifre.ShowDialog();
+
+            MessageBox.Show("Yapım Aşamasında...");
+            //Frmsifre frmsifre = new Frmsifre();
+            //frmsifre.ShowDialog();
         }
 
         private void altmenuSorgurapor_Click(object sender, EventArgs e)
         {
-            Frmsorgurapor frmsorgurapor = new Frmsorgurapor();
-            frmsorgurapor.ShowDialog();
+
+            MessageBox.Show("Yapım Aşamasında...");
+            //Frmsorgurapor frmsorgurapor = new Frmsorgurapor();
+            //frmsorgurapor.ShowDialog();
         }
 
         private void altmenuVtyedekle_Click(object sender, EventArgs e)
         {
-           DialogResult cevap=MessageBox.Show("Veritabanı Yedekleme İşlemi Başlatılacaktır.İşlemi Onaylıyor Musunuz?", "VT YEDEKLEME ONAYI", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-           if(cevap==DialogResult.Yes)
-           {
-               //Veritabanı Yedekleme Kodları Yazılacak
-               MessageBox.Show("VERİTABANI YEDEKLEME KODLARI YAZILACAK");
-           }
+
+            MessageBox.Show("Yapım Aşamasında...");
+           //DialogResult cevap=MessageBox.Show("Veritabanı Yedekleme İşlemi Başlatılacaktır.İşlemi Onaylıyor Musunuz?", "VT YEDEKLEME ONAYI", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+           //if(cevap==DialogResult.Yes)
+           //{
+           //    //Veritabanı Yedekleme Kodları Yazılacak
+           //    MessageBox.Show("Yedekleme İşlemi Kodlama");
+           //}
         }
 
         private void anamenuCikis_Click(object sender, EventArgs e)
@@ -222,7 +228,7 @@ namespace ERP_Yazilim
 
         private void btnsorgurapor_Click(object sender, EventArgs e)
         {
-            altmenuSorgurapor_Click(sender, e);
+           altmenuSorgurapor_Click(sender, e);
         }
 
         private void btnvtyedekle_Click(object sender, EventArgs e)

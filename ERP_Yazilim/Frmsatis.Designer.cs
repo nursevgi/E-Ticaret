@@ -213,6 +213,7 @@
             this.btnfatura.Text = "FATURA";
             this.btnfatura.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnfatura.UseVisualStyleBackColor = false;
+            this.btnfatura.Click += new System.EventHandler(this.btnfatura_Click);
             // 
             // btnkaydet
             // 

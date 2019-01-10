@@ -240,5 +240,11 @@ namespace ERP_Yazilim
             MessageBox.Show("Ürün Satışı BAŞARILI", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
         }
+
+        private void btnfatura_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("Yapım Aşamasında...");
+        }
     }
 }
