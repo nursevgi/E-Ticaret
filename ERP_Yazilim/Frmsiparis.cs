@@ -79,6 +79,26 @@ namespace ERP_Yazilim
             KargoDoldur();
             SiparisDurumuDoldur();
             listele();
+
+            for (int i = 0; i < dgsiparisler.Rows.Count; i++)
+            {
+                DataGridViewCellStyle renk = new DataGridViewCellStyle();
+                if (dgsiparisler.Rows[i].Cells["durum"].Value.ToString()=="KARGOYA VERİLDİ")
+                {
+                    renk.BackColor = Color.Yellow;
+                }
+                else if (dgsiparisler.Rows[i].Cells["durum"].Value.ToString()=="HAZIRLANIYOR")
+                {
+                    renk.BackColor = Color.GreenYellow;
+                }
+                else if (dgsiparisler.Rows[i].Cells["durum"].Value.ToString() == "BEKLEMEDE")
+                {
+                    renk.BackColor = Color.Red;
+                    renk.ForeColor = Color.White;
+                }
+                else { }
+                dgsiparisler.Rows[i].DefaultCellStyle = renk;
+            }
         }
 
         private void dgsiparisler_DoubleClick(object sender, EventArgs e)

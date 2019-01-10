@@ -122,9 +122,9 @@ namespace ERP_Yazilim
         private void altmenuSorgurapor_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("Yapım Aşamasında...");
-            //Frmsorgurapor frmsorgurapor = new Frmsorgurapor();
-            //frmsorgurapor.ShowDialog();
+
+            Frmsorgurapor frmsorgurapor = new Frmsorgurapor();
+            frmsorgurapor.ShowDialog();
         }
 
         private void altmenuVtyedekle_Click(object sender, EventArgs e)

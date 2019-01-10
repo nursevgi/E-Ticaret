@@ -197,6 +197,9 @@
     <EmbeddedResource Include="Frmsiparisdurum.resx">
       <DependentUpon>Frmsiparisdurum.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frmsorgurapor.resx">
+      <DependentUpon>Frmsorgurapor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frmstok.resx">
       <DependentUpon>Frmstok.cs</DependentUpon>
     </EmbeddedResource>

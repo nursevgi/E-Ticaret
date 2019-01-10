@@ -396,6 +396,7 @@ namespace ERP_Yazilim
         private void btnmail_Click(object sender, EventArgs e)
         {
             //Mail Gönderme Kodu Yazılacak !!!!!!!
+            MessageBox.Show("Yapım Aşamasında...");
         }
 
        
